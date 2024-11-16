@@ -1,5 +1,377 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 
 .page {
-  /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
+  background-image: var(--background-image);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  z-index: -1;
+  color: var(--main-text-color);
+  font-family: var(--fonts, sans-serif);
+  font-size: var(--font-size);
+  font-weight: 400;
+  line-height: 23.4px;
 }
+
+.body:has(.theme-toggler__control:checked) {
+  --main-text-color: #f1b2ce;
+  --main-background-color: #000028;
+}
+
+.header {
+  display: grid;
+  grid-template-rows: 1fr min-content 1fr;
+}
+
+.decorated-zone {
+  position: relative;
+  min-height: 100vh;
+}
+
+.decorated-zone::before {
+  content: "";
+  position: absolute;
+  border-block-start: 1px solid var(--color-change);
+  border-inline-end: 1px solid var(--color-change);
+  inline-size: 25px;
+  block-size: 25px;
+  right: 10px;
+  top: 10px;
+}
+
+.decorated-zone::after {
+  content: "";
+  position: absolute;
+  border-block-end: 1px solid var(--color-change);
+  border-inline-start: 1px solid var(--color-change);
+  inline-size: 25px;
+  block-size: 25px;
+  left: 10px;
+  bottom: 10px;
+}
+
+.lamp {
+  text-transform: uppercase;
+  color: var(--color-change);
+  position: absolute;
+  top: 10px;
+  right: 38px;
+  line-height: 25px;
+}
+
+.lamp::after {
+  content: "";
+  position: absolute;
+  background: var(--color-change);
+  box-shadow: 0px 0px 4px 2px var(--color-change);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  top: 8px;
+  left: 42px;
+}
+
+.header__theme-menu {
+  justify-self: end;
+  margin-block-start: 75px;
+  margin-inline-end: 10px;
+  min-width: 70px;
+}
+
+.header__theme-menu-list {
+  flex-direction: column;
+  display: flex;
+  gap: 10px;
+}
+
+.header__theme-menu-item {
+  text-align: center;
+  height: 26px;
+}
+
+.header__theme-menu-button {
+  color: var(--color-change);
+  line-height: 18px;
+  background-color: transparent;
+  border: none;
+  min-width: 70px;
+  min-height: 26px;
+}
+
+.header__theme-menu-button_type_light {
+  color-scheme: light;
+}
+
+.header__theme-menu-button_type_auto {
+  color-scheme: auto;
+  @media (prefers-color-scheme: light) {
+    .lamp {
+      display: none;
+      color-scheme: light;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    .lamp {
+      display: inline;
+      color-scheme: dark;
+    }
+  }
+}
+
+.header__theme-menu-button_type_dark {
+  color-scheme: dark;
+}
+
+.header__theme-menu-button_active {
+  border: 1px solid var(--color-change);
+}
+
+.header__theme-menu-button:hover {
+  border: 1px solid #ff007066;
+}
+
+.header__theme-menu-button:focus-visible {
+  border-bottom: 1px solid var(--color-change);
+  outline: none;
+}
+
+.heading {
+  display: flex;
+  justify-content: left;
+  color: var(--heading);
+  text-shadow: 4px 4px 0 var(--accent-color);
+  line-height: 82.5%;
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  margin-inline: 10px;
+  font-weight: 700;
+}
+
+.subtitle-decor {
+  background-color: var(--accent-color);
+  color: var(--subtitle-text-color);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  justify-self: end;
+  align-self: start;
+  max-width: 355px;
+  margin-inline: 10px;
+  margin-block-start: 55px;
+  white-space: pre-line;
+}   
+
+.main {
+  display: grid;
+  gap: 50px;
+  margin-block: 40px;
+  margin-inline: 10px;
+}
+
+.section {
+  display: grid;
+  gap: 20px;
+}
+
+.title-decor {
+  color: var(--color-change);
+  font-size: var(--font-size);
+  white-space: normal;
+}
+
+.subtitle {
+  margin-block-start: 0;
+  margin-inline: 0;
+  min-width: 100%;
+}
+
+.text {
+  margin-block-start: 10px;
+}
+
+.link {
+  text-shadow: 2px 1px 0 var(--accent-color);
+  text-underline-position: under;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.link:focus-visible {
+  border: 1px solid var(--main-text-color);
+  outline: none;
+}
+.link:focus {
+  border: 1px solid var(--main-text-color);
+}
+
+.subtitle-weight {
+  font-weight: 400;
+}
+
+.section-gallery {
+  gap: 10px;
+}
+
+.gallery {
+  display: grid;
+  gap: 10px;
+}
+
+.picture {
+  object-fit: cover;
+  max-width: 100%;
+}
+
+.footer {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+.footer .heading {
+  text-shadow: 2px 2px 0px #ff8dcb;
+}
+
+@media (min-width: 768px) {
+  .decorated-zone::before {
+    right: 20px;
+    top: 20px;
+  }
+
+  .decorated-zone::after {
+    left: 20px;
+    bottom: 20px;
+  }
+
+  .lamp {
+    top: 20px;
+    right: 48px;
+  }
+
+  .header__theme-menu {
+    margin-block-start: 192px;
+    margin-inline-end: 20px;
+  }
+
+  .heading {
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+    margin-inline: 0;
+  }
+
+  .subtitle-decor {
+    max-width: 364px;
+    margin-inline: 20px;
+    margin-block-start: 162px;
+  }
+
+  .main {
+    margin-block: 60px;
+    gap: 80px;
+    margin-inline: 20px;
+  }
+
+  .section {
+    grid-template-columns: min-content 1fr;
+    margin-block-start: 0;
+    gap: 20px;
+  }
+
+  .title-decor {
+    grid-row-end: span 2;
+    min-width: 236px;
+  }
+
+  .section .subtitle {
+    margin-block-start: 0;
+    margin-inline: 0;
+    min-width: 100%;
+  }
+
+  .link {
+    text-decoration: none;
+  }
+
+  .second-section {
+    grid-template-columns: 1fr;
+  }
+
+  .second-section .title-decor {
+    max-width: min-content;
+  }
+
+  .third-section .title-decor {
+    grid-row-end: span 6;
+  }
+
+  .section-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery {
+    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .picture:first-child {
+    grid-column-end: span 2;
+  }
+
+  .picture:nth-child(2) {
+    grid-row-end: span 2;
+    align-self: stretch;
+  }
+
+  .picture:nth-child(3) {
+    grid-row-end: span 2;
+    align-self: stretch;
+  }
+
+  .picture:last-child {
+    grid-column-end: span 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .header__theme-menu {
+    justify-self: center;
+    margin-block-start: 20px;
+    margin-inline-end: 0px;
+  }
+
+  .header__theme-menu-list {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .header__theme-menu-item {
+    min-width: 70px;
+  }
+
+  .subtitle-decor {
+    max-width: 491px;
+    margin-block-start: 114px;
+  }
+
+  .title-decor {
+    min-width: 315px;
+  }
+
+  .second-section {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: min-content 1fr;
+  }
+
+  .second-section .title-decor {
+    max-width: min-content;
+    grid-column-end: span 3;
+  }
+}
+/*
+Нужно стилизовать состояния кнопок по ховеру и по фокусу.
+ Для стилизации фокуса используйте :focus-visible. 
+ Стили всех состояний можно найти в макете.
+Из-за того, что темы на нашем сайте будут переключаться не только в зависимости от настроек
+ пользователя, но и принудительно, по классу, при написании стилей нам придётся дублировать
+  стили тем. Один раз для класса, а второй раз для медиафичи prefers-color-scheme.
+  */
