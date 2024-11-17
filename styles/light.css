@@ -5,7 +5,7 @@
 */
 
 .page.theme_light {
-  --background-image: url(/images/cover-image-light.png);
+  --background-image: url(../images/cover-image-light.png);
   --main-text-color: #353430;
   --main-background-color: #fff1f7;
   --accent-color: #ff8dcb;
@@ -22,7 +22,7 @@
 
 @media (prefers-color-scheme: light) {
   :root {
-    --background-image: url(/images/cover-image-light.png);
+    --background-image: url(../images/cover-image-light.png);
     --main-text-color: #353430;
     --main-background-color: #fff1f7;
     --accent-color: #ff8dcb;
