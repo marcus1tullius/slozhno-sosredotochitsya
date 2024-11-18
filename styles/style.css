@@ -21,6 +21,7 @@
 .decorated-zone {
   position: relative;
   height: 100vh;
+  min-height: 668px;
 }
 
 .decorated-zone::before {
@@ -141,7 +142,7 @@
   margin-block-start: calc(8vh + 3px);
 }
 
-.header .subtitle-decor{
+.header .subtitle-decor {
   white-space: pre-line;
 }
 
@@ -182,12 +183,12 @@
   border-bottom: 1px solid var(--main-text-color);
 }
 
-.link:focus-visible {
-  outline: 1px solid var(--main-text-color);
-}
-
 .link:focus {
   outline: none;
+}
+
+.link:focus-visible {
+  outline: 1px solid var(--main-text-color);
 }
 
 .subtitle-weight {
@@ -216,12 +217,6 @@
 
 .footer .heading {
   text-shadow: 2px 2px 0px var(--accent-color);
-}
-
-@media (min-width: 375px) {
-  .decorated-zone {
-    min-height: 668px;
-  }
 }
 
 @media (min-width: 768px) {
